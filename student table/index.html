@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Table</title>
+    <style>
+       .back-btn {
+    position: fixed;
+    top: 0px;
+  
+}
+    
+
+    </style>
+</head>
+<body>
+    <div class="back-btn"></div>
+        <a href="../index.html" class="btn btn-primary">Back to Home</a>
+    </div>
+    <table>
+        <tr>
+            <th>Student Name</th>
+            <th>Telugu Marks</th>
+            <th>English Marks</th>
+            <th>Maths Marks</th>
+            <th>Submit</th>
+            <th>Total and Grade</th>
+        </tr>
+        <tr>
+            <td><input type="text" id="sn1"></td>
+            <td><input type="number" id="tm1"></td>
+            <td><input type="number" id="em1"></td>
+            <td><input type="number" id="mm1"></td>
+            <td><button type="button" onclick="stn(1)">Submit</button></td>
+            <td><div id="stu1tot"></div></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="sn2"></td>
+            <td><input type="number" id="tm2"></td>
+            <td><input type="number" id="em2"></td>
+            <td><input type="number" id="mm2"></td>
+            <td><button type="button" onclick="stn(2)">Submit</button></td>
+            <td><div id="stu2tot"></div></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="sn3"></td>
+            <td><input type="number" id="tm3"></td>
+            <td><input type="number" id="em3"></td>
+            <td><input type="number" id="mm3"></td>
+            <td><button type="button" onclick="stn(3)">Submit</button></td>
+            <td><div id="stu3tot"></div></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="sn4"></td>
+            <td><input type="number" id="tm4"></td>
+            <td><input type="number" id="em4"></td>
+            <td><input type="number" id="mm4"></td>
+            <td><button type="button" onclick="stn(4)">Submit</button></td>
+            <td><div id="stu4tot"></div></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="sn5"></td>
+            <td><input type="number" id="tm5"></td>
+            <td><input type="number" id="em5"></td>
+            <td><input type="number" id="mm5"></td>
+            <td><button type="button" onclick="stn(5)">Submit</button></td>
+            <td><div id="stu5tot"></div></td>
+        </tr>
+    </table>
+
+    <script>
+        function stn(studentNumber) {
+            let tel = document.getElementById('tm' + studentNumber).value;
+            let eng = document.getElementById('em' + studentNumber).value;
+            let mat = document.getElementById('mm' + studentNumber).value;
+
+            let tel1 = parseInt(tel);
+            let eng1 = parseInt(eng);
+            let mat1 = parseInt(mat);
+
+            let total = tel1 + eng1 + mat1;
+
+            let grade;
+            let fail = "";
+
+            if (tel1 < 35) fail += "Telugu ";
+            if (eng1 < 35) fail += "English ";
+            if (mat1 < 35) fail += "Maths ";
+
+            if (fail === "") fail = "None";
+
+            if (total >= 270) {
+                grade = 'A';
+            } else if (total >= 240) {
+                grade = 'B';
+            } else if (total >= 200) {
+                grade = 'C';
+            } else if (total >= 150) {
+                grade = 'D';
+            } else if (total >= 100) {
+                grade = 'E';
+            } else {
+                grade = 'F';
+            }
+
+            document.getElementById("stu" + studentNumber + "tot").innerHTML = `Total: ${total}, Grade: ${grade}, Failed Subjects: ${fail}`;
+        }
+    </script>
+</body>
+</html>
